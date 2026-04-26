@@ -1,0 +1,77 @@
+/* Full-screen overlay */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 9999; /* Sit on top of everything */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Dark semi-transparent background */
+    display: flex; /* Using flexbox for centering */
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px); /* Blurs the background website */
+}
+
+/* The Modal Box */
+.modal-content {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    border: 8px solid #ffcc00; /* Bright Yellow Border */
+    box-shadow: 0 0 30px rgba(255, 204, 0, 0.5);
+    animation: pulse-yellow 1.5s infinite; /* Flashing effect */
+}
+
+/* Big Warning Text */
+.modal-content h2 {
+    color: #d9534f; /* Emergency Red */
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+/* "I AM SAFE" Button */
+.safe-btn {
+    background-color: #28a745; /* Green */
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    width: 100%;
+    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.safe-btn:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.safe-btn:active {
+    transform: scale(0.95);
+}
+
+/* Emergency Flashing Animation */
+@keyframes pulse-yellow {
+    0% {
+        border-color: #ffcc00;
+        box-shadow: 0 0 10px #ffcc00;
+    }
+    50% {
+        border-color: #ff0000; /* Flashes Red */
+        box-shadow: 0 0 40px #ff0000;
+    }
+    100% {
+        border-color: #ffcc00;
+        box-shadow: 0 0 10px #ffcc00;
+    }
+}

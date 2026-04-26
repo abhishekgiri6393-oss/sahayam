@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAHAYAM | Register</title>
+    <style>
+        /* Reusing consistent styles */
+        :root { --primary: #6366f1; --bg: #f8fafc; --text: #1e293b; }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .auth-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .logo { font-size: 2rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem; }
+        h2 { color: var(--text); margin-bottom: 1.5rem; }
+        .input-group { margin-bottom: 1rem; text-align: left; }
+        label { display: block; margin-bottom: 0.4rem; font-weight: 600; color: #64748b; }
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            outline: none;
+        }
+        input:focus { border-color: var(--primary); }
+        .btn-auth {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        .switch-page { margin-top: 1.5rem; color: #64748b; }
+        .switch-page a { color: var(--primary); text-decoration: none; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="auth-card">
+        <div class="logo">SAHAYAM</div>
+        <h2>Create Account</h2>
+        <form action="/register" method="POST" onsubmit="return validateForm()">
+    <div class="input-group">
+        <label>Username</label>
+        <input type="text" name="username" placeholder="Choose a username" required>
+    </div>
+
+    <div class="input-group">
+        <label>Your Phone Number (Numbers only)</label>
+        <input type="tel" name="phone" id="phone" 
+               pattern="[0-9]{10}" 
+               title="Please enter only numbers (10 digits)" required>
+    </div>
+
+    <div class="input-group">
+        <label>Password (Alphanumeric, min 8 chars)</label>
+        <input type="password" name="password" id="password"
+               pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" 
+               title="Password must be at least 8 characters long and contain both letters and numbers" required>
+    </div>
+
+    <button type="submit" class="btn-auth">Register</button>
+</form>
+        <div class="switch-page">
+            Already have an account? <a href="/login">Login here</a>
+        </div>
+    </div>
+
+<script>
+function validateForm() {
+    const phone = document.getElementById('phone').value;
+    // Extra check to ensure no letters are in the phone field
+    if (isNaN(phone)) {
+        alert("Phone number must contain only digits.");
+        return false;
+    }
+    return true;
+}
+</script>
+</body>
+</html>
